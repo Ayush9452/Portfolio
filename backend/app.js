@@ -4,6 +4,9 @@ import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import dbconnetion from "./database/dbconnnection.js"
+import { errormiddleware } from "./middlewares/error.js";
+import messageRouter from "./router/messageRouters.js"
+import userRouter from "./router/userRouters.js"
 
 const app = express();
 dotenv.config({path: "./config/.env"});
@@ -23,6 +26,10 @@ app.use(fileUpload({
     tempFileDir: "/tmp/"
 }));
 
+app.use("/api/v1/message",messageRouter);
+app.use("/api/v1/user",userRouter)
+
 dbconnetion();
+app.use(errormiddleware)
 
 export default app;
