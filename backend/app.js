@@ -6,7 +6,7 @@ import fileUpload from "express-fileupload";
 import dbconnetion from "./database/dbconnnection.js"
 
 const app = express();
-dotenv.config({path: "./config/config.env"});
+dotenv.config({path: "./config/.env"});
 
 app.use(cors({
     origin: [process.env.PORTFOLIO_URL,process.env.DASHBOARD_URL],
