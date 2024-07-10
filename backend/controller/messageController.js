@@ -27,7 +27,7 @@ export const deleteMessage = catchasyncerrors(async(req,res,next)=>{
     const {id} = req.params;
     const message = await Message.findById(id);
     if(!message){
-        return new Errorhandler("message of given id not found",404);
+        return next(new Errorhandler("message of given id not found",404));
     }
 
     await message.deleteOne();

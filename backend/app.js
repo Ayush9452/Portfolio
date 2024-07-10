@@ -7,6 +7,10 @@ import dbconnetion from "./database/dbconnnection.js"
 import { errormiddleware } from "./middlewares/error.js";
 import messageRouter from "./router/messageRouters.js"
 import userRouter from "./router/userRouters.js"
+import timelineRouters from "./router/timelineRouters.js"
+import softwareApplicationRouters from "./router/softwareApplicationRouters.js"
+import skillRouters from "./router/skillRouters.js"
+import projectRouters from "./router/projectRouters.js"
 
 const app = express();
 dotenv.config({path: "./config/.env"});
@@ -28,6 +32,10 @@ app.use(fileUpload({
 
 app.use("/api/v1/message",messageRouter);
 app.use("/api/v1/user",userRouter)
+app.use("/api/v1/timeline",timelineRouters)
+app.use("/api/v1/application",softwareApplicationRouters)
+app.use("/api/v1/skill",skillRouters)
+app.use("/api/v1/project",projectRouters)
 
 dbconnetion();
 app.use(errormiddleware)
