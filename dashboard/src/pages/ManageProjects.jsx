@@ -22,13 +22,15 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import { Eye, Pen, Trash2 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "./sub-components/Spinner";
 
 const ManageProjects = () => {
   const navigateTo = useNavigate();
+  const [id, setId] = useState("")
   const handleReturnToDashboard = () => {
     navigateTo("/");
   };
@@ -38,6 +40,7 @@ const ManageProjects = () => {
 
   const dispatch = useDispatch();
   const handleProjectDelete = (id) => {
+    setId(id);
     dispatch(deleteProject(id));
   };
 
@@ -142,14 +145,14 @@ const ManageProjects = () => {
                               <TooltipProvider>
                                 <Tooltip>
                                   <TooltipTrigger asChild>
-                                    <button
+                                    {loading && element._id === id ? <Spinner /> : (<button
                                       className="border-red-600 border-2 rounded-full h-8 w-8 flex justify-center items-center text-red-600  hover:text-slate-50 hover:bg-red-600"
                                       onClick={() =>
                                         handleProjectDelete(element._id)
                                       }
                                     >
                                       <Trash2 className="h-5 w-5" />
-                                    </button>
+                                    </button>)}
                                   </TooltipTrigger>
                                   <TooltipContent side="bottom">
                                     Delete
