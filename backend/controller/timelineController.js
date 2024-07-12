@@ -23,10 +23,11 @@ export const deleteTimeline = catchasyncerrors(async (req,res,next)=>{
         message: "Timeline Deleted Successfully",
     })
 })
+
 export const getAllTimeline = catchasyncerrors(async (req,res,next)=>{
-    const alltimeline = await Timeline.find();
+    const timelines = await Timeline.find();
     res.status(200).json({
         success: true,
-        alltimeline,
+        timelines,
     })
 })

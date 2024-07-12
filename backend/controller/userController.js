@@ -89,8 +89,8 @@ export const logout = catchasyncerrors(async (req,res,next)=>{
     }).json({
         success: true,
         message: "User Logged Out",
-    })
-})
+    });
+});
 
 export const getUser = catchasyncerrors(async (req,res,next)=>{
     const user = await User.findById(req.user.id);
@@ -204,7 +204,6 @@ export const forgotPassword = catchasyncerrors(async (req,res,next)=>{
     await user.save({validateBeforeSave: false});
     const resetPasswordUrl = `${process.env.DASHBOARD_URL}/password/reset/${resetToken}`;
     const message = `Your Reset Password Token is:- \n\n ${resetPasswordUrl}  \n\n If You've not requested this email then, please ignore this.`;
-    console.log(resetToken);
 try {
     await sendEmail({
         email: user.email,
