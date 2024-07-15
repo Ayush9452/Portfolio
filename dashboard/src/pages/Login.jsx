@@ -75,7 +75,7 @@ const Login = () => {
       </div>
       <div className="hidden bg-muted lg:block">
         <img
-          src="/placeholder.svg"
+          src="/login.png"
           alt="Image"
           width="1920"
           height="1080"

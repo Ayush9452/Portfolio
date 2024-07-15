@@ -79,7 +79,7 @@ const ForgotPassword = () => {
       </div>
       <div className="hidden bg-muted lg:block">
         <img
-          src="/placeholder.svg"
+          src="/reset.png"
           alt="Image"
           width="1920"
           height="1080"
