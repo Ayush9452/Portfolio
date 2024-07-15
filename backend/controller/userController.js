@@ -201,6 +201,7 @@ export const forgotPassword = catchasyncerrors(async (req,res,next)=>{
         return next(new Errorhandler("User Not Found",404));
     }
     const resetToken = user.getResetPasswordToken();
+    console.log(resetToken);
     await user.save({validateBeforeSave: false});
     const resetPasswordUrl = `${process.env.DASHBOARD_URL}/password/reset/${resetToken}`;
     const message = `Your Reset Password Token is:- \n\n ${resetPasswordUrl}  \n\n If You've not requested this email then, please ignore this.`;
