@@ -50,7 +50,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     try {
         const { data } = await axios.post(
-            "http://localhost:5000/api/v1/user/password/forgot", 
+            "https://portfolio-backend-e7yq.onrender.com/api/v1/user/password/forgot", 
             { email }, 
             { withCredentials: true, headers: { "Content-Type": "application/json" }});
             dispatch(forgotResetPassSlice.actions.forgotPasswordSuccess(data.message));
@@ -64,7 +64,7 @@ export const resetPassword = (token, password, confirmPassword) => async (dispat
     dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
     try {
         const { data } = await axios.put(
-            `http://localhost:5000/api/v1/user/password/reset/${token}`, 
+            `https://portfolio-backend-e7yq.onrender.com/api/v1/user/password/reset/${token}`, 
             { password, confirmPassword }, 
             { withCredentials: true, headers: { "Content-Type": "application/json" }});
             dispatch(forgotResetPassSlice.actions.resetPasswordSuccess(data.message));

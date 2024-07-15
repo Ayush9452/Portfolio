@@ -100,7 +100,7 @@ const projectSlice = createSlice({
 export const addNewProject = (data) => async (dispatch) =>{
     dispatch(projectSlice.actions.addNewProjectRequest());
     try {
-        const response = await axios.post("http://localhost:5000/api/v1/project/add",
+        const response = await axios.post("https://portfolio-backend-e7yq.onrender.com/api/v1/project/add",
             data,
             {
                 withCredentials: true,
@@ -119,7 +119,7 @@ export const updateProject = (id,data,) => async (dispatch) =>{
     console.log(id)
     dispatch(projectSlice.actions.addNewProjectRequest());
     try {
-        const response = await axios.put(`http://localhost:5000/api/v1/project/update/${id}`,
+        const response = await axios.put(`https://portfolio-backend-e7yq.onrender.com/api/v1/project/update/${id}`,
             data,
             {
                 withCredentials: true,
@@ -137,7 +137,7 @@ export const updateProject = (id,data,) => async (dispatch) =>{
 export const getAllProjects = () => async (dispatch) =>{
     dispatch(projectSlice.actions.getAllProjectRequest());
     try {
-        const {data} = await axios.get("http://localhost:5000/api/v1/project/getall",
+        const {data} = await axios.get("https://portfolio-backend-e7yq.onrender.com/api/v1/project/getall",
             {withCredentials: true}
         );
         dispatch(projectSlice.actions.getAllProjectSuccess(data.allProject));
@@ -150,13 +150,13 @@ export const getAllProjects = () => async (dispatch) =>{
 export const deleteProject = (id) => async (dispatch) =>{
     dispatch(projectSlice.actions.deleteProjectRequest());
     try {
-        const {data} = await axios.delete(`http://localhost:5000/api/v1/project/delete/${id}`,
+        const {data} = await axios.delete(`https://portfolio-backend-e7yq.onrender.com/api/v1/project/delete/${id}`,
             {withCredentials: true}
         );
         dispatch(projectSlice.actions.deleteProjectSuccess(data.message));
         dispatch(projectSlice.actions.clearAllErrors());
     } catch (error) {
-        dispatch(projectSlice.actions.deleteProjectSliceFail(error.response.data.message));
+        dispatch(projectSlice.actions.deleteProjectFail(error.response.data.message));
     }
 }
 

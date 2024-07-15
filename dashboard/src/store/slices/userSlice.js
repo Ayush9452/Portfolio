@@ -113,7 +113,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(userSlice.actions.loginRequest());
     try {
         const { data } = await axios.post(
-            "http://localhost:5000/api/v1/user/login", 
+            "https://portfolio-backend-e7yq.onrender.com/api/v1/user/login", 
             { email, password }, 
             { withCredentials: true, headers: { "Content-Type": "application/json" }});
             dispatch(userSlice.actions.loginSuccess(data.user));
@@ -127,7 +127,7 @@ export const getUser = () => async (dispatch) => {
     dispatch(userSlice.actions.loadUserRequest());
     try {
         const {data} = await axios.get(
-            "http://localhost:5000/api/v1/user/me",
+            "https://portfolio-backend-e7yq.onrender.com/api/v1/user/me",
             { withCredentials: true });
             dispatch(userSlice.actions.loadUserSuccess(data.user));
             dispatch(userSlice.actions.clearAllErrors());
@@ -139,7 +139,7 @@ export const getUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         const {data} = await axios.get(
-            "http://localhost:5000/api/v1/user/logout",
+            "https://portfolio-backend-e7yq.onrender.com/api/v1/user/logout",
             { withCredentials: true });
             dispatch(userSlice.actions.logoutSuccess(data.message));
             dispatch(userSlice.actions.clearAllErrors());
@@ -152,7 +152,7 @@ export const updatePassword = (currentPassword, newPassword, confirmNewPassword)
     dispatch(userSlice.actions.updatePasswordRequest());
     try {
         const { data } = await axios.put(
-            "http://localhost:5000/api/v1/user/update/password", 
+            "https://portfolio-backend-e7yq.onrender.com/api/v1/user/update/password", 
             { currentPassword, newPassword, confirmNewPassword }, 
             { withCredentials: true, headers: { "Content-Type": "application/json" }});
             dispatch(userSlice.actions.updatePasswordSuccess(data.message));
@@ -167,7 +167,7 @@ export const updateProfile = (data) => async (dispatch) => {
     dispatch(userSlice.actions.updateProfileRequest());
     try {
         const response = await axios.put(
-            "http://localhost:5000/api/v1/user/update/me", 
+            "https://portfolio-backend-e7yq.onrender.com/api/v1/user/update/me", 
             data, 
             { withCredentials: true, headers: { "Content-Type": "multipart/form-data" }});
             dispatch(userSlice.actions.updateProfileSuccess(response.data.message));

@@ -71,7 +71,7 @@ const softwareApplicationSlice = createSlice({
 export const addNewSoftwareApplication = (data) => async (dispatch) =>{
     dispatch(softwareApplicationSlice.actions.addNewsoftwareApplicationRequest());
     try {
-        const response = await axios.post("http://localhost:5000/api/v1/application/add",
+        const response = await axios.post("https://portfolio-backend-e7yq.onrender.com/api/v1/application/add",
             data,
             {
                 withCredentials: true,
@@ -89,7 +89,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) =>{
 export const getAllSoftwareApplications = () => async (dispatch) =>{
     dispatch(softwareApplicationSlice.actions.getAllsoftwareApplicationRequest());
     try {
-        const {data} = await axios.get("http://localhost:5000/api/v1/application/getall",
+        const {data} = await axios.get("https://portfolio-backend-e7yq.onrender.com/api/v1/application/getall",
             {withCredentials: true}
         );
         dispatch(softwareApplicationSlice.actions.getAllsoftwareApplicationSuccess(data.AllApplication));
@@ -102,7 +102,7 @@ export const getAllSoftwareApplications = () => async (dispatch) =>{
 export const deleteSoftwareApplication = (id) => async (dispatch) =>{
     dispatch(softwareApplicationSlice.actions.deletesoftwareApplicationRequest());
     try {
-        const {data} = await axios.delete(`http://localhost:5000/api/v1/application/delete/${id}`,
+        const {data} = await axios.delete(`https://portfolio-backend-e7yq.onrender.com/api/v1/application/delete/${id}`,
             {withCredentials: true}
         );
         dispatch(softwareApplicationSlice.actions.deletesoftwareApplicationSuccess(data.message));

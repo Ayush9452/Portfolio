@@ -71,7 +71,7 @@ const timelineSlice = createSlice({
 export const addNewTimeline = (data) => async (dispatch) =>{
     dispatch(timelineSlice.actions.addNewTimelineRequest());
     try {
-        const response = await axios.post("http://localhost:5000/api/v1/timeline/add",
+        const response = await axios.post("https://portfolio-backend-e7yq.onrender.com/api/v1/timeline/add",
             data,
             {
                 withCredentials: true,
@@ -88,7 +88,7 @@ export const addNewTimeline = (data) => async (dispatch) =>{
 export const getAllTimeline = () => async (dispatch) =>{
     dispatch(timelineSlice.actions.getAllTimelineRequest());
     try {
-        const {data} = await axios.get("http://localhost:5000/api/v1/timeline/getall",
+        const {data} = await axios.get("https://portfolio-backend-e7yq.onrender.com/api/v1/timeline/getall",
             {withCredentials: true}
         );
         dispatch(timelineSlice.actions.getAllTimelineSuccess(data.timelines));
@@ -101,7 +101,7 @@ export const getAllTimeline = () => async (dispatch) =>{
 export const deleteTimeline = (id) => async (dispatch) =>{
     dispatch(timelineSlice.actions.deleteTimelineRequest());
     try {
-        const {data} = await axios.delete(`http://localhost:5000/api/v1/timeline/delete/${id}`,
+        const {data} = await axios.delete(`https://portfolio-backend-e7yq.onrender.com/api/v1/timeline/delete/${id}`,
             {withCredentials: true}
         );
         dispatch(timelineSlice.actions.deleteTimelineSuccess(data.message));
