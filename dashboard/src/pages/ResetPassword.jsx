@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 import { getUser } from '@/store/slices/userSlice';
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
   const {token} = useParams();
   const [password,setPassword] = useState("");
   const [confirmpassword,setConfirmpassword] = useState("");
@@ -90,4 +90,4 @@ const ForgotPassword = () => {
   )
 }
 
-export default ForgotPassword;
+export default ResetPassword;
