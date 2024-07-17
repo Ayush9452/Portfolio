@@ -282,7 +282,7 @@ const HomePage = () => {
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground "
                 }`}
-                onClick={() => setActive("Timeline")}
+                onClick={() => setActive("Add Timeline")}
               >
                 <History className="h-5 w-5" />
                 Timeline
